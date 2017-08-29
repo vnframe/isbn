@@ -12,8 +12,11 @@ class TestISBN < Minitest::Test
     end
     def test_for_arr
         num = "123456789x"
-        assert_equal(["1", "2", "3", "4", "5", "6", "7", "8", "9", "x"], isbn_ten_calc(num))
+        assert_equal(["1", "2", "3", "4", "5", "6", "7", "8", "9", "x"], num_to_array(num))
     end
-
+    def test_with_dashes
+        num = "12-3456-789x"
+        assert_equal(["1", "2", "3", "4", "5", "6", "7", "8", "9", "x"], num_to_array(num))
+    end
 
 end
