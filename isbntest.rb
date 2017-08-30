@@ -18,5 +18,9 @@ class TestISBN < Minitest::Test
         num = "12-3456-789x"
         assert_equal(["1", "2", "3", "4", "5", "6", "7", "8", "9", "x"], num_to_array(num))
     end
-
+    def test_ten_func
+        num = "123456789x"
+        assert_equal(true, isbn_ten_length(num))
+        p num
+    end
 end
