@@ -15,7 +15,7 @@ end
 
 def check(id)
     id = num_to_array(id)
-    id = id[0..9]
+    id = id[0..8]
     sum=0
 
     id.each_with_index do |value, index|
