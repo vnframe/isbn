@@ -29,14 +29,14 @@ class TestISBN < Minitest::Test
     end
     def test_check
         num = "877195869x"
-        assert_equal("x", check(num))
+        assert_equal(true, check(num))
     end
     def test_check_zero
         num = "0-321-146530"
-        assert_equal("0",check(num))
+        assert_equal(true,check(num))
     end
     def test_check_digit
         num = "0471958697"
-        assert_equal("7", check(num))
+        assert_equal(true, check(num))
     end
 end
