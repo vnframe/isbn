@@ -12,9 +12,19 @@ def isbn_ten_length(id)
         false
     end
 end
-
+def isbn_thirteen_length(id)
+    id = num_to_array(id)
+    if id.length == 13
+        true
+    else
+        false 
+    end
+end
 def check(id)
     id = num_to_array(id)
+    if isbn_ten_length(id) == false 
+        false 
+    else
     check_digit = id.pop
     sum=0
 
@@ -23,12 +33,20 @@ def check(id)
     end
     
     last = sum % 11
-    if check_digit == "x" && last == 10
+    case check digit
+    when "x" && last == 10
         true
       
-    elsif check_digit.to_i == last.to_i
+    when check_digit.to_i == last.to_i
         true
-    else 
+    else
         false
     end 
 end
+end
+
+# def check_thirteen(id)
+#     id = num_to_array(id)
+
+#     id.each_with_index do (value, index)
+# end
