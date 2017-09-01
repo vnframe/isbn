@@ -22,9 +22,6 @@ def isbn_thirteen_length(id)
 end
 def check(id)
     id = num_to_array(id)
-    if isbn_ten_length(id) == false 
-        false 
-    else
     check_digit = id.pop
     sum=0
 
@@ -33,20 +30,29 @@ def check(id)
     end
     
     last = sum % 11
-    case check digit
-    when "x" && last == 10
+    if check_digit == "x" && last == 10
         true
       
-    when check_digit.to_i == last.to_i
+    elsif check_digit.to_i == last.to_i
         true
-    else
+    else 
         false
     end 
 end
+
+def check_thirteen(id)
+    id = num_to_array(id)
+    id.each_with_index do (value, index)
+        if index % 2 == 0 
+            sum = sum + id[index].to_i * 1
+        else
+            sum = sum + id[index].to_i * 3
+        end
+    end
+    check_digit = (10 - (sum % 10))
+    if check_digit == id[-1].to_i
+        true
+    else 
+        false
+    end
 end
-
-# def check_thirteen(id)
-#     id = num_to_array(id)
-
-#     id.each_with_index do (value, index)
-# end
