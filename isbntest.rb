@@ -29,18 +29,22 @@ class TestISBN < Minitest::Test
     end
     def test_check
         num = "877195869x"
-        assert_equal(true, check(num))
+        assert_equal(true, check_ten(num))
     end
     def test_check_zero
         num = "0-321-146530"
-        assert_equal(true,check(num))
+        assert_equal(true,check_ten(num))
     end
     def test_check_digit
         num = "0471958697"
-        assert_equal(true, check(num))
+        assert_equal(true, check_ten(num))
     end
-    def test_check_13
-        num = "978-0-13-149505-0"
-        assert_equal(true, check_thirteen(num))
+    # def test_check_13
+    #     num = "978-0-13-149505-0"
+    #     assert_equal(true, check_thirteen(num))
+    # end
+    def test_check_10_full
+        num = "877195869x"
+        assert_equal(true,isbn_ten_full(num))
     end
 end
