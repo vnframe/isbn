@@ -20,6 +20,13 @@ def isbn_thirteen_length(id)
         false 
     end
 end
+def check_for_letters(id)
+    if id.include?"a-z"
+        false
+    else
+        true
+    end
+end
 def check_ten(id)
     id = num_to_array(id)
     check_digit = id.pop
@@ -71,7 +78,7 @@ def check_thirteen(id)
 end
 
 def isbn_ten_full(id)
-    if isbn_ten_length(id) == true && check_ten(id) == true 
+    if isbn_ten_length(id) == true && check_ten(id) == true && check_for_letters(id) == false
         true
     else 
         false
