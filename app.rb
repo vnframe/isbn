@@ -7,10 +7,10 @@ end
 
 post "/index" do 
     id = params[:isbn]
-    if isbn_ten_full(id) == true
-        redirect "/valid?isbn=" + id
-    else 
+    if choose_isbn_type(id) == false
         redirect "/invalid?isbn=" + id
+    else 
+         redirect "/valid?isbn=" + id
     end
 end
 get "/valid" do 

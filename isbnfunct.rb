@@ -93,3 +93,20 @@ def isbn_ten_full(id)
         false
     end
 end
+def isbn_thirteen_full(id)
+    if isbn_thirteen_length(id) == true && check_thirteen(id) == true
+        true
+    else 
+        false
+    end 
+end 
+
+def choose_isbn_type(id)
+    if id.length == 10
+        isbn_ten_full(id)
+    elsif id.length == 13
+        isbn_thirteen_full(id)
+    else 
+        false
+    end 
+end
