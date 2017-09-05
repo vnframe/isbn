@@ -1,3 +1,6 @@
+require "csv"
+def csv_valid(id)
+end
 def num_to_array(id)
     id = id.delete"-"
     id = id.delete" "
@@ -21,10 +24,12 @@ def isbn_thirteen_length(id)
     end
 end
 def check_for_letters(id)
+    id = num_to_array(id)
+    id = id.pop
     if id.include?"a-z"
-        false
-    else
         true
+    else
+        false
     end
 end
 def check_ten(id)
@@ -66,10 +71,14 @@ def check_thirteen(id)
 	
     check_digit = (10 - (sum %10))% 10
     #Calculates check digit
-    p "id is #{id.class}"
-    p "check is #{check}"
-    p "check digit is #{check_digit}"
-		if check_digit == check
+    #p "id is #{id.class}"
+    #p "check is #{check.class}"
+    #p "check digit is #{check_digit.class}"
+    check_digit = check_digit.to_s
+    check = check.to_s
+        if check_digit == check
+            # p "check digit is #{check_digit.class}"
+            # p "check is #{check.class}"
             true
         else 
             false
