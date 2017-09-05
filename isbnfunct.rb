@@ -42,30 +42,30 @@ end
 
 def check_thirteen(id)
     id = num_to_array(id)
-    valid = false
 	sum = 0
-	index_pos = 0
-	index_count = 1
-	counter = id.pop
-	#alternate between multiplying by 1 and 3
-	#If index % 2 equals 0 we have an even number, so multiply by 1
-	#Otherwise multiply by 3
-	#Add to sum each iteration
-	counter.length.times do
-		if index_pos % 2 == 0
-			sum = sum + id[index_pos].to_i *  1
-			else 
-				sum = sum + id[index_pos].to_i * 3
-		end
-		index_pos += 1
-		index_count += 1
+	# index_pos = 1
+	# index_count = 1
+	check = id.pop
+
+	id.each_with_index do |value, index_pos|
+		if index_pos.to_i % 2 == 0
+            sum += value.to_i * 1
+          else
+            sum += value.to_i * 3
+  end
+		# index_pos += 1
+		# index_count += 1
 	end	
 	
-	check_digit = (10 - (sum %10))% 10
-	#Calculates check digit
-		if check_digit == id[-1].to_i
-			valid = true
+    check_digit = (10 - (sum %10))% 10
+    #Calculates check digit
+    p "id is #{id.class}"
+    p "check is #{check}"
+    p "check digit is #{check_digit}"
+		if check_digit == check
+            true
+        else 
+            false
 
-		end
-valid
+        end
 end
