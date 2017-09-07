@@ -1,18 +1,19 @@
 require "csv"
-def check_through_csv_file
-	initial = CSV.read('input_isbn.csv')
+def check_through_csv_file()
+	initial = CSV.read('input_isbn_file.csv')
 
-	initial = initial.shift
+    initial.shift
+    p initial
 
 	returned = []
 
 	initial.each do |value|
 		if choose_isbn_type(value[1]) == true
-			value = "valid"
+			value.push("valid")
 		else
-			value = "invalid"
+			value.push("invalid") 
 		end
-        returned << value
+        returned.push(value)
         p returned
 	end
         CSV.open("output_isbn_file.csv", "w") do |csv|
