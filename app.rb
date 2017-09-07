@@ -22,3 +22,6 @@ get "/invalid" do
     id = params[:isbn]
     erb :invalid, locals: {id: id}
 end
+get "/index" do
+    erb :index
+end
