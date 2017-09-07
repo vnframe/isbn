@@ -24,13 +24,15 @@ def isbn_thirteen_length(id)
 end
 def check_for_letters(id)
     # id = num_to_array(id)
-    id = id.pop
-    if id.include?"a-z"
+    p "in check for letters, ID id #{id}"
+    last = id.pop
+    if (id && ["a-zA-Z"]).any?
         true
     else
         false
     end
 end
+
 def check_ten(id)
     # if id.class == String
     # id = num_to_array(id)
@@ -106,6 +108,7 @@ end
 
 def choose_isbn_type(id)
     id = num_to_array(id)
+    p "ID is #{id}"
     if id.length == 10
         isbn_ten_full(id)
     elsif id.length == 13
