@@ -7,6 +7,7 @@ end
 
 post "/index" do 
     id = params[:isbn]
+    p "ID is an #{id.class}"
     if choose_isbn_type(id) == false
         redirect "/invalid?isbn=" + id
     else 

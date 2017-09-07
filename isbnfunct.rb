@@ -2,13 +2,12 @@ require "csv"
 def csv_valid(id)
 end
 def num_to_array(id)
-    id = id.delete"-"
-    id = id.delete" "
+    id = id.delete" -"
     id = id.chars
      id
 end
 def isbn_ten_length(id)
-    id = num_to_array(id)
+    #id = num_to_array(id)
     if id.length == 10
         true
     else
@@ -16,7 +15,7 @@ def isbn_ten_length(id)
     end
 end
 def isbn_thirteen_length(id)
-    id = num_to_array(id)
+    #id = num_to_array(id)
     if id.length == 13
         true
     else
@@ -24,7 +23,7 @@ def isbn_thirteen_length(id)
     end
 end
 def check_for_letters(id)
-    id = num_to_array(id)
+    # id = num_to_array(id)
     id = id.pop
     if id.include?"a-z"
         true
@@ -33,7 +32,9 @@ def check_for_letters(id)
     end
 end
 def check_ten(id)
-    id = num_to_array(id)
+    # if id.class == String
+    # id = num_to_array(id)
+    # end
     check_digit = id.pop
     sum=0
 
@@ -53,7 +54,9 @@ def check_ten(id)
 end
 
 def check_thirteen(id)
-    id = num_to_array(id)
+    # if id.class == String
+    # id = num_to_array(id)
+    # end
 	sum = 0
 	# index_pos = 1
 	# index_count = 1
@@ -102,6 +105,7 @@ def isbn_thirteen_full(id)
 end 
 
 def choose_isbn_type(id)
+    id = num_to_array(id)
     if id.length == 10
         isbn_ten_full(id)
     elsif id.length == 13
