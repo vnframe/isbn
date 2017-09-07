@@ -1,6 +1,25 @@
 require "csv"
-def csv_valid(id)
+def check_through_csv_file
+	initial = CSV.read('input_isbn.csv')
+
+	initial = initial.shift
+
+	returned = []
+
+	initial.each do |value|
+		if choose_isbn_type(value[1]) == true
+			value = "valid"
+		else
+			value = "invalid"
+		end
+        returned << value
+        p returned
+	end
+        CSV.open("output_isbn_file.csv", "w") do |csv|
+		    csv << returned
+    end
 end
+
 def num_to_array(id)
     id = id.delete" -"
     id = id.chars
@@ -117,3 +136,4 @@ def choose_isbn_type(id)
         false
     end 
 end
+check_through_csv_file()
