@@ -1,24 +1,20 @@
 require "csv"
 def check_through_csv_file()
-	initial = CSV.read('input_isbn_file.csv')
+	initial = File.open('output_isbn_file.csv', "w")
 
-    initial.shift
     p initial
 
 	returned = []
 
-	initial.each do |value|
+	CSV.foreach("input_isbn_file.csv") do |value|
 		if choose_isbn_type(value[1]) == true
 			value.push("valid")
 		else
 			value.push("invalid") 
-		end
-        returned.push(value)
-        p returned
 	end
-        CSV.open("output_isbn_file.csv", "w") do |csv|
-		    csv << returned
-    end
+    initial.puts value[0] + ", " + value[1] + ", " + value[2]
+    
+end
 end
 
 def num_to_array(id)
