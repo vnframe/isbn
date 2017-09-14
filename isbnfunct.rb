@@ -1,4 +1,5 @@
 require "csv"
+
 def check_through_csv_file()
 	initial = File.open('output_isbn_file.csv', "w")
 
