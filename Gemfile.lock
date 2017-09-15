@@ -17,6 +17,7 @@ PLATFORMS
 
 DEPENDENCIES
   sinatra (= 2.0.0)
+  aws-sdk (= 3.0.1)
 
 RUBY VERSION
    ruby 2.3.1p112
