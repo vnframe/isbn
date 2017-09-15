@@ -22,20 +22,27 @@ get "/valid" do
     id = params[:isbn]
     id = id + ", " + "valid" + "\n"
     connect_to_bucket(id)
+    id = get_file()
     erb :valid, locals: {id: id}
 end
 get "/invalid" do 
     id = params[:isbn]
     id = id + ", " + "invalid" + "\n"
     connect_to_bucket(id)
-    #id = get_file()
+    
     erb :invalid, locals: {id: id}
 end
-get "/index" do
-    erb :index
+post "/invalid" do 
+    id = params[:isbn]
+    id = get_file()
+    redirect "/results?isbn=" + "id"
 end
+
 get "/results" do
     id = params[:isbn]
 
-    erb :results
+    erb :results, locals: {id: id}
 end 
+get "/index" do
+    erb :index
+end

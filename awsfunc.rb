@@ -1,6 +1,6 @@
 require "rubygems"
 require "aws-sdk"
-load"./local_env.rb"
+load './local_env.rb' if File.exist?('./local_env.rb')
 #Aws.use_bundled_cert!
 def connect_to_bucket(id)
  
@@ -23,18 +23,24 @@ end
 end
 
 def get_file()
-  s3 = Aws::s3::Client.new #initializes
+  s3 = Aws::S3::Client.new #initializes
   aws_file = s3.get_object(bucket: 'csv-isbn', key: 'awsisbn.csv') #gets specific bucket and file
+  aws_file = aws_file.body.read
   id_array = aws_file.split #places text from csv file into array
     list_of_isbn = [] #will hold values of id_array
+    # p id_array
     id_array.each do |value|
-      value.gsub!(/"/, '') #removes specified characters
+      # p value
+      p value.gsub!(/"/, '') #removes specified characters
+      # p value
       list_of_isbn << value 
+      
     end 
-    p "#{list_of_isbn} IS HERE"
+    # p test
+    puts "#{list_of_isbn} IS HERE"
 
 end
-
+# get_file()
 
 
 #connect_to_bucket(id)
