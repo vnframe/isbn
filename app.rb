@@ -20,11 +20,13 @@ post "/index" do
 end
 get "/valid" do 
     id = params[:isbn]
+    id = id + ", " + "valid" + "\n"
     connect_to_bucket(id)
     erb :valid, locals: {id: id}
 end
 get "/invalid" do 
     id = params[:isbn]
+    id = id + ", " + "invalid" + "\n"
     connect_to_bucket(id)
     erb :invalid, locals: {id: id}
 end

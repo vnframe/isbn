@@ -11,10 +11,15 @@ Aws::S3::Client.new(
 )
 #id = "Tordffei" + "/n"
   file = 'awsisbn.csv'
+  write_file = File.open(file, "a")
+  write_file << id 
+  write_file.close
   bucket = 'csv-isbn'
   s3 = Aws::S3::Resource.new(region: 'us-east-2')
   obj = s3.bucket(bucket).object(file)
-obj.put(body: id)
+  File.open(file, 'rb') do |file|
+obj.put(body: file)
+  end
 
 end
 
