@@ -20,28 +20,35 @@ post "/index" do
 end
 get "/valid" do 
     id = params[:isbn]
-    id = id + ", " + "valid" + "\n"
+    id_csv = id + ", " + "valid" + "\n"
     connect_to_bucket(id)
-    id = get_file()
+    
     erb :valid, locals: {id: id}
+end
+post "/valid" do 
+    id = params[:isbn]
+    
+    redirect "/results?isbn=" + "id"
 end
 get "/invalid" do 
     id = params[:isbn]
-    id = id + ", " + "invalid" + "\n"
+    id = id + ", " + "valid" + "\n"
     connect_to_bucket(id)
     
     erb :invalid, locals: {id: id}
 end
+
 post "/invalid" do 
     id = params[:isbn]
-    id = get_file()
+
     redirect "/results?isbn=" + "id"
 end
 
 get "/results" do
     id = params[:isbn]
-
-    erb :results, locals: {id: id}
+    id_csv = params[:id_csv]
+    id_csv = get_file()
+    erb :results, locals: {id: id, id_csv: id_csv}
 end 
 get "/index" do
     erb :index
