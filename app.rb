@@ -28,8 +28,14 @@ get "/invalid" do
     id = params[:isbn]
     id = id + ", " + "invalid" + "\n"
     connect_to_bucket(id)
+    id = get_file()
     erb :invalid, locals: {id: id}
 end
 get "/index" do
     erb :index
 end
+get "/results" do
+    id = params[:isbn]
+
+    erb :results
+end 
