@@ -48,6 +48,7 @@ get "/results" do
     id = params[:isbn]
     id_csv = params[:id_csv]
     id_csv = get_file()
+    #puts "ID_CSV is #{id_csv}"
     erb :results, locals: {id: id, id_csv: id_csv}
 end 
 get "/index" do

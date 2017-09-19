@@ -1,2 +1,14 @@
+<div id = "result_isbn">
 Your results are
-<%=id_csv%>
+<% id_csv = id_csv.gsub("[", "").gsub(" ", "").gsub("]","") %>
+	<% id_csv = id_csv.delete(' ')  %>
+	<% id_csv = id_csv.split(",") %>
+	
+	<% id_csv.each_with_index do |single, position| %>
+	<% if position % 3 == 0 %>
+	<br>
+	<% else %>
+	<% end %>
+	<%= "#{single.gsub('"','')}" %>
+<% end %>
+</div>

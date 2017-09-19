@@ -37,8 +37,9 @@ def get_file()
       
     end 
     # p test
-    puts "#{list_of_isbn} IS HERE"
-
+    #puts "#{list_of_isbn} IS HERE"
+list_of_isbn = list_of_isbn.join(", ")
+list_of_isbn = list_of_isbn.to_s
 end
 # get_file()
 
